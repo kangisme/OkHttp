@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.kangren.okhttp">
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.OkhttpActivity">
+
+        </activity>
+
+        <activity android:name=".ui.CustomActivity">
+
+        </activity>
+        <activity android:name=".ui.ViewGroupActivity">
+
+        </activity>
+
+        <activity android:name=".ui.ChannelCategoryActivity">
+
+        </activity>
+        <activity android:name=".ui.SerializableActivity">
+
+        </activity>
+
+        <activity android:name=".ui.ViewDrawActivity"
+            android:process="com.kang.viewdraw">
+
+        </activity>
+
+        <receiver android:name=".view.MyAppWidgetProvider">
+            <meta-data
+                android:resource="@xml/appwidget_provider_info"
+                android:name="android.appwidget.provider">
+            </meta-data>
+            <intent-filter>
+                <action android:name="com.kang.okhttp.action.CLICK"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
