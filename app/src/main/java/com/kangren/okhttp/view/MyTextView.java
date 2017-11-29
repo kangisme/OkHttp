@@ -81,7 +81,7 @@ public class MyTextView extends AppCompatTextView {
             float textWidth = mBound.width();   //文本的宽度
             //控件的宽度就是文本的宽度加上两边的内边距。内边距就是padding值，在构造方法执行完就被赋值
             width = (int) (getPaddingLeft() + textWidth + getPaddingRight());
-            Log.v("openxu", "文本的宽度:"+textWidth + "控件的宽度："+width);
+            Log.v("kangisme", "文本的宽度:"+textWidth + "控件的宽度："+width);
         }
         //高度跟宽度处理方式一样
         if (heightMode == MeasureSpec.EXACTLY) {
@@ -89,7 +89,7 @@ public class MyTextView extends AppCompatTextView {
         } else {
             float textHeight = mBound.height();
             height = (int) (getPaddingTop() + textHeight + getPaddingBottom());
-            Log.v("openxu", "文本的高度:"+textHeight + "控件的高度："+height);
+            Log.v("kangisme", "文本的高度:"+textHeight + "控件的高度："+height);
         }
         //保存测量宽度和测量高度
         setMeasuredDimension(width, height);

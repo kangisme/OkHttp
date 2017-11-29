@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -42,6 +44,20 @@
             android:process="com.kang.viewdraw">
 
         </activity>
+
+        <activity android:name=".ui.CircleActivity">
+
+        </activity>
+
+        <activity android:name=".ui.EventBusActivity">
+
+        </activity>
+
+        <activity android:name=".ui.NextActivity">
+
+        </activity>
+        <activity android:name=".ui.RxAndroidActivity"/>
+        <activity android:name=".ui.SystemInfoActivity"/>
 
         <receiver android:name=".view.MyAppWidgetProvider">
             <meta-data

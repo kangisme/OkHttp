@@ -7,9 +7,13 @@ import android.util.Log;
 import android.view.View;
 
 import com.kangren.okhttp.ui.ChannelCategoryActivity;
+import com.kangren.okhttp.ui.CircleActivity;
 import com.kangren.okhttp.ui.CustomActivity;
+import com.kangren.okhttp.ui.EventBusActivity;
 import com.kangren.okhttp.ui.OkhttpActivity;
+import com.kangren.okhttp.ui.RxAndroidActivity;
 import com.kangren.okhttp.ui.SerializableActivity;
+import com.kangren.okhttp.ui.SystemInfoActivity;
 import com.kangren.okhttp.ui.ViewDrawActivity;
 import com.kangren.okhttp.ui.ViewGroupActivity;
 import com.kangren.okhttp.view.MyAppWidgetProvider;
@@ -63,6 +67,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 goActivity(ViewDrawActivity.class);
+            }
+        });
+        findViewById(R.id.circle_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(CircleActivity.class);
+            }
+        });
+        findViewById(R.id.event_bus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(EventBusActivity.class);
+            }
+        });
+        findViewById(R.id.rx_android).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(RxAndroidActivity.class);
+            }
+        });
+        findViewById(R.id.system_info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(SystemInfoActivity.class);
             }
         });
     }
