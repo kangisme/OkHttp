@@ -14,6 +14,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ViewActivity">
+
+        </activity>
+
+        <activity android:name=".activity.OkhttpActivity">
+
+        </activity>
+
+        <activity android:name=".activity.CustomActivity">
+
+        </activity>
+        <activity android:name=".activity.ViewGroupActivity">
+
+        </activity>
+
+        <activity android:name=".activity.ChannelCategoryActivity">
+
+        </activity>
+        <activity android:name=".activity.SerializableActivity">
+
+        </activity>
+
+        <activity android:name=".activity.ViewDrawActivity"
+            android:process="com.kang.viewdraw">
+
+        </activity>
+
+        <activity android:name=".activity.CircleActivity">
+
+        </activity>
+
+        <activity android:name=".activity.EventBusActivity">
+
+        </activity>
+
+        <activity android:name=".activity.NextActivity">
+
+        </activity>
+        <activity android:name=".activity.RxAndroidActivity"/>
+        <activity android:name=".activity.SystemInfoActivity"/>
+        <activity android:name=".activity.SharePreferencesActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,43 +62,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity android:name=".ui.OkhttpActivity">
-
-        </activity>
-
-        <activity android:name=".ui.CustomActivity">
-
-        </activity>
-        <activity android:name=".ui.ViewGroupActivity">
-
-        </activity>
-
-        <activity android:name=".ui.ChannelCategoryActivity">
-
-        </activity>
-        <activity android:name=".ui.SerializableActivity">
-
-        </activity>
-
-        <activity android:name=".ui.ViewDrawActivity"
-            android:process="com.kang.viewdraw">
-
-        </activity>
-
-        <activity android:name=".ui.CircleActivity">
-
-        </activity>
-
-        <activity android:name=".ui.EventBusActivity">
-
-        </activity>
-
-        <activity android:name=".ui.NextActivity">
-
-        </activity>
-        <activity android:name=".ui.RxAndroidActivity"/>
-        <activity android:name=".ui.SystemInfoActivity"/>
+        <activity android:name=".FunctionActivity"/>
 
         <receiver android:name=".view.MyAppWidgetProvider">
             <meta-data

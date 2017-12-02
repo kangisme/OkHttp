@@ -1,4 +1,4 @@
-package com.kangren.okhttp.ui;
+package com.kangren.okhttp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.TextView;
 
-import com.kangren.okhttp.Item;
+import com.kangren.okhttp.model.Item;
 import com.kangren.okhttp.R;
 
 /**

@@ -5,13 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/custom_view"
-        android:text="自定义View"
+        android:id="@+id/read_json"
+        android:text="读取单一对象"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/function_test"
-        android:text="功能测试"
+        android:id="@+id/read_jsons"
+        android:text="读取List"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </LinearLayout>

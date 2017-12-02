@@ -1,4 +1,4 @@
-package com.kangren.okhttp.ui;
+package com.kangren.okhttp.activity;
 
 import org.greenrobot.eventbus.EventBus;
 

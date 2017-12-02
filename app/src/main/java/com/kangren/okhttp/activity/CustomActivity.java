@@ -1,4 +1,4 @@
-package com.kangren.okhttp.ui;
+package com.kangren.okhttp.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,10 +10,16 @@ import com.kangren.okhttp.R;
  * Created by kangren on 2017/11/1.
  */
 
-public class ViewGroupActivity extends Activity {
+public class CustomActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_group);
+        setContentView(R.layout.activity_custom);
+        init();
+    }
+
+    private void init()
+    {
+
     }
 }

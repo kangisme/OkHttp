@@ -1,4 +1,4 @@
-package com.kangren.okhttp.ui;
+package com.kangren.okhttp.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 
-import com.kangren.okhttp.Info;
+import com.kangren.okhttp.model.Info;
 import com.kangren.okhttp.R;
 
 /**

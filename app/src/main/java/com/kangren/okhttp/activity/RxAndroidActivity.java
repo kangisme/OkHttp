@@ -1,7 +1,4 @@
-package com.kangren.okhttp.ui;
-
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
+package com.kangren.okhttp.activity;
 
 import android.app.Activity;
 import android.os.Bundle;

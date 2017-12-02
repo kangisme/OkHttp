@@ -1,6 +1,8 @@
-package com.kangren.okhttp;
+package com.kangren.okhttp.model;
 
 import java.io.Serializable;
+
+import com.kangren.okhttp.model.Info;
 
 /**
  * Created by kangren on 2017/11/8.
@@ -10,7 +12,7 @@ public class Item implements Serializable{
     public static int i = 0;
     public int j;
     public Test test;
-    public  Info info;
+    public Info info;
 
     public Item(int j) {
         this.j = j;
