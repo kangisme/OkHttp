@@ -14,6 +14,11 @@
         android:text="读取List"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/read_family"
+        android:text="读取组合对象"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/text_view"
         android:layout_width="match_parent"
