@@ -39,6 +39,11 @@
                 android:text="圆形进度条"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/recycle_property"
+                android:text="Recycle我的资产"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

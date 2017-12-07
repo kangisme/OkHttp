@@ -1,5 +1,6 @@
 package com.kangren.okhttp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import com.kangren.okhttp.activity.ChannelCategoryActivity;
 import com.kangren.okhttp.activity.CircleActivity;
 import com.kangren.okhttp.activity.CustomActivity;
+import com.kangren.okhttp.activity.PropertyActivity;
 import com.kangren.okhttp.activity.ViewDrawActivity;
 import com.kangren.okhttp.activity.ViewGroupActivity;
 
@@ -16,12 +18,13 @@ import com.kangren.okhttp.activity.ViewGroupActivity;
  * Created by kangren on 2017/12/2.
  */
 
-public class ViewActivity extends AppCompatActivity {
+public class ViewActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
+        init();
     }
 
     private void init()
@@ -56,7 +59,12 @@ public class ViewActivity extends AppCompatActivity {
                 goActivity(CircleActivity.class);
             }
         });
-
+        findViewById(R.id.recycle_property).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(PropertyActivity.class);
+            }
+        });
     }
 
     private void goActivity(Class activity)

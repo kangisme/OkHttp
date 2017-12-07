@@ -44,6 +44,12 @@
                 android:text="SP本地存储"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/spannable"
+                android:textAllCaps="false"
+                android:text="SpannableStringBuilder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

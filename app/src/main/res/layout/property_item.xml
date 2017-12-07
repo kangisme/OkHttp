@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/property_item_bg"
+    android:layout_width="match_parent"
+    android:layout_height="115dp">
+    <LinearLayout
+        android:id="@+id/property_normal"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/property_item_diamond"
+            android:src="@mipmap/property_diamond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_marginTop="5.5dp"
+            android:id="@+id/property_item_text"
+            android:text="云钻 2000"
+            android:textSize="13sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/property_clicked"
+        android:orientation="vertical"
+        android:background="#FF00AEEF"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <TextView
+            android:id="@+id/property_item_use"
+            android:text="立即使用"
+            android:paddingTop="5dp"
+            android:paddingBottom="4dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:background="@drawable/round_text_bg"
+            android:textSize="15sp"
+            android:textColor="#FFFFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/property_item_get"
+            android:layout_marginTop="12dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="4dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:background="@drawable/round_text_bg"
+            android:text="获取云钻"
+            android:textSize="15sp"
+            android:textColor="#FFFFFFFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/property_closed"
+        android:paddingStart="4dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="6dp"
+        android:paddingBottom="6dp"
+        android:src="@mipmap/property_item_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</FrameLayout>

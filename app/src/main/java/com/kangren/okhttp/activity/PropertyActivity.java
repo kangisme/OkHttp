@@ -13,9 +13,13 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kangren.okhttp.R;
 import com.kangren.okhttp.util.GridSpacingItemDecoration;
@@ -76,6 +80,7 @@ public class PropertyActivity extends Activity {
         class ViewHolder extends RecyclerView.ViewHolder
         {
             private LinearLayout normalLayout;
+            private LinearLayout clickedLayout;
             private ImageView propertyIcon;
             private TextView propertyText;
             private TextView useText;
@@ -89,6 +94,7 @@ public class PropertyActivity extends Activity {
                 getText = (TextView) itemView.findViewById(R.id.property_item_get);
                 closedIcon = (ImageView) itemView.findViewById(R.id.property_closed);
                 normalLayout = (LinearLayout) itemView.findViewById(R.id.property_normal);
+                clickedLayout = (LinearLayout) itemView.findViewById(R.id.property_clicked);
             }
         }
 
@@ -109,6 +115,46 @@ public class PropertyActivity extends Activity {
                     notifyDataSetChanged();
                 }
             });
+            holder.clickedLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //事件不处理，覆盖normalLayout点击事件
+                }
+            });
+            holder.useText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(PropertyActivity.this, "use", Toast.LENGTH_SHORT).show();
+                }
+            });
+            holder.getText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(PropertyActivity.this, "get", Toast.LENGTH_SHORT).show();
+                }
+            });
+            holder.closedIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //取消clickedLayout
+                    mPosition = -1;
+                    notifyDataSetChanged();
+                }
+            });
+            if (position == mPosition)
+            {
+                Animation mShowAction = AnimationUtils.loadAnimation(PropertyActivity.this, R.anim.property_item_click_show);
+                holder.clickedLayout.startAnimation(mShowAction);
+                holder.clickedLayout.setVisibility(View.VISIBLE);
+                mShowAction = AnimationUtils.loadAnimation(PropertyActivity.this, R.anim.property_item_close_show);
+                holder.closedIcon.startAnimation(mShowAction);
+                holder.closedIcon.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                holder.clickedLayout.setVisibility(View.GONE);
+                holder.closedIcon.setVisibility(View.GONE);
+            }
         }
 
         @Override
