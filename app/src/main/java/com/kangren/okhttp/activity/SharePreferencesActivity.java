@@ -11,8 +11,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kangren.okhttp.R;
+import com.kangren.okhttp.model.GsonBuilderBeanOne;
+import com.kangren.okhttp.model.GsonBuilderBeanThree;
+import com.kangren.okhttp.model.GsonBuilderBeanTwo;
 
 /**
  * Created by kangren on 2017/11/29.
@@ -37,6 +41,81 @@ public class SharePreferencesActivity extends Activity {
         gson = new Gson();
         SingleAndList();
         complexObject();
+        useAnnotation();
+        deserializable();
+
+        serializedName();
+
+        versionGson();
+    }
+
+    /**
+     * 版本解析，只解析1.0版本及以下的字段
+     */
+    private void versionGson() {
+        findViewById(R.id.gson_since).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Gson gson2 = new GsonBuilder().setVersion(1.0).create();
+                GsonBuilderBeanThree gsonBuilderBeanThree = new GsonBuilderBeanThree("144", "123");
+
+                result.setText(gson2.toJson(gsonBuilderBeanThree));
+            }
+        });
+    }
+
+    /**
+     * 自定义序列化名称
+     */
+    private void serializedName() {
+        findViewById(R.id.serialized_name).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GsonBuilderBeanTwo gsonBuilderBeanTwo = new GsonBuilderBeanTwo("144", "123");
+                result.setText(gson.toJson(gsonBuilderBeanTwo));
+            }
+        });
+    }
+
+    /**
+     * 反序列化
+     */
+    private void deserializable() {
+        findViewById(R.id.deserializable).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Gson gson2 = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+
+                String showString = "";
+                String jsonString = "{'username':'144','password':'123','school':'华软','classroom':'软工五班','sex':'男'}";
+
+                showString += "json:" + jsonString + "\n解析后的数据：\n";
+                GsonBuilderBeanOne beanOne = gson2.fromJson(jsonString, GsonBuilderBeanOne.class);
+                showString += beanOne.toString();
+
+                showString += "----------------------\n";
+                result.setText(showString);
+            }
+        });
+    }
+
+    /**
+     * 只有GsonBuilder生成的Gson对象才能使注解生效
+     */
+    private void useAnnotation() {
+        findViewById(R.id.use_annotation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Gson gson2 = new GsonBuilder().excludeFieldsWithoutExposeAnnotation()
+                        .create();
+
+                GsonBuilderBeanOne gsonBuilderBeanOne = new GsonBuilderBeanOne("144",
+                        "123", "华软", "软工五班", "男");
+
+                String resultJson = gson2.toJson(gsonBuilderBeanOne);
+                result.setText(resultJson);
+            }
+        });
     }
 
     /**
