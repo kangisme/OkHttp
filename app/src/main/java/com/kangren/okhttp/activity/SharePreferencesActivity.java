@@ -1,7 +1,9 @@
 package com.kangren.okhttp.activity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -47,6 +49,20 @@ public class SharePreferencesActivity extends Activity {
         serializedName();
 
         versionGson();
+
+        findViewById(R.id.gson_map).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //解析Map对象需要使用GsonBuilder生成对象
+                Gson gson1 = new GsonBuilder().enableComplexMapKeySerialization().create();
+                Map<String,String> map = new HashMap<>();
+                map.put("key1", "value1");
+                map.put("key2", "value2");
+                map.put("key3", "value3");
+                String resultJson = gson1.toJson(map);
+                result.setText(resultJson);
+            }
+        });
     }
 
     /**

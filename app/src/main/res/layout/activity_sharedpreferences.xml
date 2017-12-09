@@ -39,6 +39,11 @@
         android:text="Gson版本解析"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/gson_map"
+        android:text="Gson解析Map对象"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/text_view"
         android:layout_width="match_parent"
