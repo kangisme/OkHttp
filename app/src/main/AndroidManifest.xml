@@ -65,6 +65,7 @@
         <activity android:name=".FunctionActivity"/>
         <activity android:name=".activity.PropertyActivity"/>
         <activity android:name=".activity.SpannableActivity"/>
+        <activity android:name=".activity.BaiduTranslateActivity"/>
 
         <receiver android:name=".view.MyAppWidgetProvider">
             <meta-data

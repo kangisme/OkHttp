@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.kangren.okhttp.activity.BaiduTranslateActivity;
 import com.kangren.okhttp.activity.SpannableActivity;
 import com.kangren.okhttp.model.Info;
 import com.kangren.okhttp.model.Item;
@@ -73,6 +74,12 @@ public class FunctionActivity extends Activity {
             @Override
             public void onClick(View v) {
                 goActivity(SpannableActivity.class);
+            }
+        });
+        findViewById(R.id.baidu_translate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(BaiduTranslateActivity.class);
             }
         });
     }
