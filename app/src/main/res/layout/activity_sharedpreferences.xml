@@ -19,6 +19,26 @@
         android:text="读取组合对象"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/use_annotation"
+        android:text="Gson使用注解"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/deserializable"
+        android:text="使用注解反序列化"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/serialized_name"
+        android:text="自定义序列化名称"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/gson_since"
+        android:text="Gson版本解析"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/text_view"
         android:layout_width="match_parent"

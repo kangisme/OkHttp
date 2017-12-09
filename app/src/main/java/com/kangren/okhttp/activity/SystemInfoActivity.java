@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.kangren.okhttp.R;
 import com.kangren.okhttp.util.SystemUtil;
@@ -22,15 +23,10 @@ public class SystemInfoActivity extends Activity {
 
     private void init()
     {
-        showSystemParameter();
+        String info = "系统参数\n" + "手机厂商：" + SystemUtil.getDeviceBrand() + "\n手机型号：" + SystemUtil.getSystemModel()
+                + "\n手机当前系统语言：" + SystemUtil.getSystemLanguage() + "\nAndroid系统版本号：" + SystemUtil.getSystemVersion()
+                + "\n手机IMEI：" + SystemUtil.getIMEI(getApplicationContext());
+        ((TextView) findViewById(R.id.system_info_text)).setText(info);
     }
 
-    private void showSystemParameter() {
-        String TAG = "系统参数：";
-        Log.e(TAG, "手机厂商：" + SystemUtil.getDeviceBrand());
-        Log.e(TAG, "手机型号：" + SystemUtil.getSystemModel());
-        Log.e(TAG, "手机当前系统语言：" + SystemUtil.getSystemLanguage());
-        Log.e(TAG, "Android系统版本号：" + SystemUtil.getSystemVersion());
-        Log.e(TAG, "手机IMEI：" + SystemUtil.getIMEI(getApplicationContext()));
-    }
 }
