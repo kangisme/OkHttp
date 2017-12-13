@@ -13,7 +13,7 @@
         android:layout_height="38dp">
         <ImageView
             android:layout_marginRight="2dp"
-            android:src="@mipmap/property_agreement_icon"
+            android:src="@mipmap/asset_agreement_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <TextView
@@ -23,14 +23,14 @@
             android:layout_height="wrap_content"/>
         <ImageView
             android:layout_marginRight="12dp"
-            android:src="@mipmap/property_agreement_arrow"
+            android:src="@mipmap/asset_agreement_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
-        android:id="@+id/property_recycler"
+        android:id="@+id/asset_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>

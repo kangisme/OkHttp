@@ -9,13 +9,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,9 +26,9 @@ import com.kangren.okhttp.util.GridSpacingItemDecoration;
  * Created by kangren on 2017/12/4.
  */
 
-public class PropertyActivity extends Activity {
+public class MyAssetActivity extends Activity {
 
-    private RecyclerView propertyRecycler;
+    private RecyclerView assetRecycler;
 
     private List<Drawable> drawables;
 
@@ -42,33 +40,33 @@ public class PropertyActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_property);
+        setContentView(R.layout.activity_myasset);
         init();
     }
 
     private void init()
     {
         drawables = new ArrayList<>();
-        Drawable drawable = getResources().getDrawable(R.mipmap.property_diamond);
+        Drawable drawable = getResources().getDrawable(R.mipmap.asset_diamond);
         drawables.add(drawable);
-        drawable = getResources().getDrawable(R.mipmap.property_points);
+        drawable = getResources().getDrawable(R.mipmap.asset_points);
         drawables.add(drawable);
-        drawable = getResources().getDrawable(R.mipmap.property_dragon);
+        drawable = getResources().getDrawable(R.mipmap.asset_dragon);
         drawables.add(drawable);
-        drawable = getResources().getDrawable(R.mipmap.property_coupon);
+        drawable = getResources().getDrawable(R.mipmap.asset_coupon);
         drawables.add(drawable);
-        drawable = getResources().getDrawable(R.mipmap.property_sports);
+        drawable = getResources().getDrawable(R.mipmap.asset_sports);
         drawables.add(drawable);
-        drawable = getResources().getDrawable(R.mipmap.property_movies);
+        drawable = getResources().getDrawable(R.mipmap.asset_movies);
         drawables.add(drawable);
-        drawable = getResources().getDrawable(R.mipmap.property_present_times);
+        drawable = getResources().getDrawable(R.mipmap.asset_present_times);
         drawables.add(drawable);
-        propertyRecycler = (RecyclerView) findViewById(R.id.property_recycler);
+        assetRecycler = (RecyclerView) findViewById(R.id.asset_recycler);
         GridLayoutManager  gridLayoutManager = new GridLayoutManager (this, 3, GridLayoutManager.VERTICAL, false);
-        propertyRecycler.setLayoutManager(gridLayoutManager);
-        propertyRecycler.addItemDecoration(new GridSpacingItemDecoration(3, getResources().getDimensionPixelOffset(R.dimen.property_item_gap), true));
-        propertyRecycler.setHasFixedSize(true);
-        propertyRecycler.setAdapter(new PropertyAdapter());
+        assetRecycler.setLayoutManager(gridLayoutManager);
+        assetRecycler.addItemDecoration(new GridSpacingItemDecoration(3, getResources().getDimensionPixelOffset(R.dimen.property_item_gap), true));
+        assetRecycler.setHasFixedSize(true);
+        assetRecycler.setAdapter(new PropertyAdapter());
     }
 
     private class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHolder>
@@ -81,33 +79,33 @@ public class PropertyActivity extends Activity {
         {
             private LinearLayout normalLayout;
             private LinearLayout clickedLayout;
-            private ImageView propertyIcon;
-            private TextView propertyText;
+            private ImageView assetIcon;
+            private TextView assetText;
             private TextView useText;
             private TextView getText;
             private ImageView closedIcon;
             public ViewHolder(View itemView) {
                 super(itemView);
-                propertyIcon = (ImageView) itemView.findViewById(R.id.property_item_diamond);
-                propertyText = (TextView) itemView.findViewById(R.id.property_item_text);
-                useText = (TextView) itemView.findViewById(R.id.property_item_use);
-                getText = (TextView) itemView.findViewById(R.id.property_item_get);
-                closedIcon = (ImageView) itemView.findViewById(R.id.property_closed);
-                normalLayout = (LinearLayout) itemView.findViewById(R.id.property_normal);
-                clickedLayout = (LinearLayout) itemView.findViewById(R.id.property_clicked);
+                assetIcon = (ImageView) itemView.findViewById(R.id.asset_item_diamond);
+                assetText = (TextView) itemView.findViewById(R.id.asset_item_text);
+                useText = (TextView) itemView.findViewById(R.id.asset_item_use);
+                getText = (TextView) itemView.findViewById(R.id.asset_item_get);
+                closedIcon = (ImageView) itemView.findViewById(R.id.asset_closed);
+                normalLayout = (LinearLayout) itemView.findViewById(R.id.asset_normal);
+                clickedLayout = (LinearLayout) itemView.findViewById(R.id.asset_clicked);
             }
         }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.property_item, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.asset_item, parent, false);
             ViewHolder holder = new ViewHolder(view);
             return holder;
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, final int position) {
-            holder.propertyIcon.setImageDrawable(drawables.get(position));
+            holder.assetIcon.setImageDrawable(drawables.get(position));
             holder.normalLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -124,13 +122,13 @@ public class PropertyActivity extends Activity {
             holder.useText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(PropertyActivity.this, "use", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyAssetActivity.this, "use", Toast.LENGTH_SHORT).show();
                 }
             });
             holder.getText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(PropertyActivity.this, "get", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MyAssetActivity.this, "get", Toast.LENGTH_SHORT).show();
                 }
             });
             holder.closedIcon.setOnClickListener(new View.OnClickListener() {
@@ -143,10 +141,10 @@ public class PropertyActivity extends Activity {
             });
             if (position == mPosition)
             {
-                Animation mShowAction = AnimationUtils.loadAnimation(PropertyActivity.this, R.anim.property_item_click_show);
+                Animation mShowAction = AnimationUtils.loadAnimation(MyAssetActivity.this, R.anim.property_item_click_show);
                 holder.clickedLayout.startAnimation(mShowAction);
                 holder.clickedLayout.setVisibility(View.VISIBLE);
-                mShowAction = AnimationUtils.loadAnimation(PropertyActivity.this, R.anim.property_item_close_show);
+                mShowAction = AnimationUtils.loadAnimation(MyAssetActivity.this, R.anim.property_item_close_show);
                 holder.closedIcon.startAnimation(mShowAction);
                 holder.closedIcon.setVisibility(View.VISIBLE);
             }

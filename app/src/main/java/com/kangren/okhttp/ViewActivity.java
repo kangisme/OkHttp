@@ -2,14 +2,14 @@ package com.kangren.okhttp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.kangren.okhttp.activity.ChannelCategoryActivity;
 import com.kangren.okhttp.activity.CircleActivity;
 import com.kangren.okhttp.activity.CustomActivity;
-import com.kangren.okhttp.activity.PropertyActivity;
+import com.kangren.okhttp.activity.FloatingButtonActivity;
+import com.kangren.okhttp.activity.MyAssetActivity;
 import com.kangren.okhttp.activity.ViewDrawActivity;
 import com.kangren.okhttp.activity.ViewGroupActivity;
 
@@ -62,7 +62,13 @@ public class ViewActivity extends Activity {
         findViewById(R.id.recycle_property).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goActivity(PropertyActivity.class);
+                goActivity(MyAssetActivity.class);
+            }
+        });
+        findViewById(R.id.floating_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(FloatingButtonActivity.class);
             }
         });
     }
