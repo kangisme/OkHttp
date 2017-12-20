@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kangren.okhttp.ViewActivity">
+    tools:context="com.kangren.practice.ViewActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,11 +17,6 @@
             <Button
                 android:id="@+id/okhttp"
                 android:text="OKHttp测试"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/serializable"
-                android:text="serializable测试"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <Button

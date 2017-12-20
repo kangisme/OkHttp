@@ -1,74 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.kangren.okhttp">
+          package="com.kangren.practice">
     <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
     <application
-        android:name=".MyApplication"
+        android:name="com.kangren.practice.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewActivity">
+        <activity android:name="com.kangren.practice.ViewActivity">
 
         </activity>
 
-        <activity android:name=".activity.OkhttpActivity">
+        <activity android:name="com.kangren.practice.activity.OkhttpActivity">
 
         </activity>
 
-        <activity android:name=".activity.CustomActivity">
+        <activity android:name="com.kangren.practice.activity.CustomActivity">
 
         </activity>
-        <activity android:name=".activity.ViewGroupActivity">
-
-        </activity>
-
-        <activity android:name=".activity.ChannelCategoryActivity">
-
-        </activity>
-        <activity android:name=".activity.SerializableActivity">
+        <activity android:name="com.kangren.practice.activity.ViewGroupActivity">
 
         </activity>
 
-        <activity android:name=".activity.ViewDrawActivity"
-            android:process="com.kang.viewdraw">
+        <activity android:name="com.kangren.practice.activity.ChannelCategoryActivity">
 
         </activity>
 
-        <activity android:name=".activity.CircleActivity">
+        <activity android:name="com.kangren.practice.activity.ViewDrawActivity"
+                  android:process="com.kang.viewdraw">
 
         </activity>
 
-        <activity android:name=".activity.EventBusActivity">
+        <activity android:name="com.kangren.practice.activity.CircleActivity">
 
         </activity>
 
-        <activity android:name=".activity.NextActivity">
+        <activity android:name="com.kangren.practice.activity.EventBusActivity">
 
         </activity>
-        <activity android:name=".activity.RxAndroidActivity"/>
-        <activity android:name=".activity.SystemInfoActivity"/>
-        <activity android:name=".activity.SharePreferencesActivity"/>
-        <activity android:name=".MainActivity">
+
+        <activity android:name="com.kangren.practice.activity.NextActivity">
+
+        </activity>
+        <activity android:name="com.kangren.practice.activity.RxAndroidActivity"/>
+        <activity android:name="com.kangren.practice.activity.SystemInfoActivity"/>
+        <activity android:name="com.kangren.practice.activity.SharePreferencesActivity"/>
+        <activity android:name="com.kangren.practice.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".FunctionActivity"/>
-        <activity android:name=".activity.MyAssetActivity"/>
-        <activity android:name=".activity.SpannableActivity"/>
-        <activity android:name=".activity.BaiduTranslateActivity"/>
-        <activity android:name=".activity.FloatingButtonActivity"/>
+        <activity android:name="com.kangren.practice.FunctionActivity"/>
+        <activity android:name="com.kangren.practice.activity.MyAssetActivity"/>
+        <activity android:name="com.kangren.practice.activity.SpannableActivity"/>
+        <activity android:name="com.kangren.practice.activity.BaiduTranslateActivity"/>
+        <activity android:name="com.kangren.practice.activity.FloatingButtonActivity"/>
 
-        <receiver android:name=".view.MyAppWidgetProvider">
+        <receiver android:name="com.kangren.practice.view.MyAppWidgetProvider">
             <meta-data
                 android:resource="@xml/appwidget_provider_info"
                 android:name="android.appwidget.provider">

@@ -4,7 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <com.kangren.okhttp.view.MyTextView
+    <com.kangren.practice.view.MyTextView
         kang:mText="自定义TextView"
         kang:mSize="32sp"
         kang:mColor="#ffffaaee"

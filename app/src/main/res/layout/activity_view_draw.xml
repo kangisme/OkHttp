@@ -3,9 +3,9 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <com.kangren.okhttp.view.MyViewGroup
+    <com.kangren.practice.view.MyViewGroup
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.kangren.okhttp.view.MyViewGroup>
+    </com.kangren.practice.view.MyViewGroup>
 </LinearLayout>

@@ -4,7 +4,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <com.kangren.okhttp.view.CircleView
+    <com.kangren.practice.view.CircleView
         android:id="@+id/circle_view"
         app:mBitmap="@drawable/alipay"
         android:src="@drawable/alipay"
