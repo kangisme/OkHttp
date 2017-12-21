@@ -64,6 +64,8 @@
         <activity android:name="com.kangren.practice.activity.SpannableActivity"/>
         <activity android:name="com.kangren.practice.activity.BaiduTranslateActivity"/>
         <activity android:name="com.kangren.practice.activity.FloatingButtonActivity"/>
+        <activity android:name=".activity.Html5Activity"/>
+        <activity android:name=".activity.TexiaotuActivity"/>
 
         <receiver android:name="com.kangren.practice.view.MyAppWidgetProvider">
             <meta-data

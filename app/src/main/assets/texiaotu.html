@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <!--从assert中加载的中文网页会出现乱码，解决办法就是给html指定编码-->
+        <meta http-equiv="content-type" content="text/html;charset=utf-8">
+        <title>
+        </title>
+
+
+    </head>
+    <body onload="start()">
+        假装这是一个Html5特效动画 <br/>
+		动画将在3秒内结束
+        <script type="text/javascript">
+            function start() {
+                setTimeout(function(){
+                    //调用原生的方法，android为约定的别名；stop()为原生的方法
+                    window.android.stop();
+                },3000);
+            }
+        </script>
+    </body>
+</html>

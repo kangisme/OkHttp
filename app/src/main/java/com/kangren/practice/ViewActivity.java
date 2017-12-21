@@ -9,7 +9,9 @@ import com.kangren.practice.activity.ChannelCategoryActivity;
 import com.kangren.practice.activity.CircleActivity;
 import com.kangren.practice.activity.CustomActivity;
 import com.kangren.practice.activity.FloatingButtonActivity;
+import com.kangren.practice.activity.Html5Activity;
 import com.kangren.practice.activity.MyAssetActivity;
+import com.kangren.practice.activity.TexiaotuActivity;
 import com.kangren.practice.activity.ViewDrawActivity;
 import com.kangren.practice.activity.ViewGroupActivity;
 
@@ -69,6 +71,18 @@ public class ViewActivity extends Activity {
             @Override
             public void onClick(View v) {
                 goActivity(FloatingButtonActivity.class);
+            }
+        });
+        findViewById(R.id.html5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(Html5Activity.class);
+            }
+        });
+        findViewById(R.id.texiaotu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(TexiaotuActivity.class);
             }
         });
     }
