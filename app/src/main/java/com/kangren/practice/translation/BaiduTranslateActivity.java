@@ -1,8 +1,11 @@
-package com.kangren.practice.activity;
+package com.kangren.practice.translation;
 
 import java.io.IOException;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -10,24 +13,30 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.kangren.practice.R;
-import com.kangren.practice.model.ResultBean;
-import com.kangren.practice.model.TransResultBean;
-import com.kangren.practice.util.BaiduAPI;
-import com.kangren.practice.view.SelectPopupWindow;
+import com.kangren.practice.translation.util.BaiduAPI;
 
 /**
  * Created by kangren on 2017/12/9.
  */
 
-public class BaiduTranslateActivity extends Activity implements View.OnClickListener{
+public class BaiduTranslateActivity extends Activity
+        implements View.OnClickListener,PopupMenu.OnMenuItemClickListener{
 
     private final static int MSG_TRANSLATION_RESULT = 0;
+
+    /**
+     * 自动判断
+     */
+    private final static String AUTO = "auto";
 
     private final static String CHINESE = "zh";
 
@@ -55,12 +64,19 @@ public class BaiduTranslateActivity extends Activity implements View.OnClickList
 
     private TextView translate;
 
+    private ImageButton toolMenu;
+
     /**
      * 选择语言弹窗
      */
     private SelectPopupWindow popupWindow;
 
     private Gson gson;
+
+    /**
+     * 剪贴板
+     */
+    private ClipboardManager clipboardManager;
 
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -93,14 +109,16 @@ public class BaiduTranslateActivity extends Activity implements View.OnClickList
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baidu);
-        from = "auto";
-        to = ENGLISH;
-        gson = new Gson();
         initView();
         initPopupView();
     }
 
     private void initView() {
+        from = AUTO;
+        to = ENGLISH;
+        gson = new Gson();
+        clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+
         originalLanguage = (TextView) findViewById(R.id.original_text_kind);
         originalText = (TextView) findViewById(R.id.original_text);
         translatedLanguage = (TextView) findViewById(R.id.select_language);
@@ -111,6 +129,16 @@ public class BaiduTranslateActivity extends Activity implements View.OnClickList
         translate.setOnClickListener(this);
         translatedText.setOnClickListener(this);
         translatedLanguage.setOnClickListener(this);
+        toolMenu = (ImageButton) findViewById(R.id.tool_menu);
+        toolMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu menu = new PopupMenu(BaiduTranslateActivity.this, toolMenu, Gravity.BOTTOM);
+                menu.inflate(R.menu.menu_tool);
+                menu.setOnMenuItemClickListener(BaiduTranslateActivity.this);
+                menu.show();
+            }
+        });
     }
 
     private void initPopupView() {
@@ -213,5 +241,47 @@ public class BaiduTranslateActivity extends Activity implements View.OnClickList
                 Log.e("tan90", "it can not happen!");
         }
         return languageString;
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.clear:
+                originalText.setText("");
+                translatedText.setText("");
+                break;
+            case R.id.paste:
+                ClipData clipData = clipboardManager.getPrimaryClip();
+                if (clipData != null && clipData.getItemCount() > 0)
+                {
+                    ClipData.Item clipItem = clipData.getItemAt(0);
+                    String existString = originalText.getText().toString();
+                    originalText.setText(existString + clipItem.getText().toString());
+                }
+                else
+                {
+                    Toast.makeText(this, "The clipboard is empty!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.copy:
+                String result = translatedText.getText().toString();
+                if (TextUtils.isEmpty(result))
+                {
+                    Toast.makeText(this, "The translation is empty!", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    clipboardManager.setText(result);
+                    Toast.makeText(this, "Copyed to clipboard!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.setting:
+                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+        }
+        return true;
     }
 }

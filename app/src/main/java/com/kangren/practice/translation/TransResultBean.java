@@ -1,4 +1,4 @@
-package com.kangren.practice.model;
+package com.kangren.practice.translation;
 
 /**
  * Created by kangren on 2017/12/11.

@@ -1,5 +1,6 @@
 package com.kangren.practice.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,6 +35,7 @@ public class TexiaotuActivity extends Activity {
         }
     });
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

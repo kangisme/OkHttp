@@ -6,19 +6,10 @@
     tools:ignore="HardcodedText"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <Button
-        android:id="@+id/custom_view"
-        android:text="自定义View"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/function_test"
-        android:text="功能测试"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/baidu_translate"
-        android:text="百度翻译"
+        android:id="@+id/begin_test"
+        android:text="点击开始指纹识别"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

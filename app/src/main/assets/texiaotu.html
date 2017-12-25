@@ -7,15 +7,23 @@
 
 
     </head>
-    <body onload="start()">
-        假装这是一个Html5特效动画 <br/>
-		动画将在3秒内结束
+    <body onpageshow="start()">
+        动画将在<span id="time">10</span>秒内结束</br>
         <script type="text/javascript">
             function start() {
+				setTimeout("document.getElementById('time').innerHTML='9'",1000);
+				setTimeout("document.getElementById('time').innerHTML='8'",2000);
+				setTimeout("document.getElementById('time').innerHTML='7'",3000);
+				setTimeout("document.getElementById('time').innerHTML='6'",4000);
+				setTimeout("document.getElementById('time').innerHTML='5'",5000);
+				setTimeout("document.getElementById('time').innerHTML='4'",6000);
+				setTimeout("document.getElementById('time').innerHTML='3'",7000);
+				setTimeout("document.getElementById('time').innerHTML='2'",8000);
+				setTimeout("document.getElementById('time').innerHTML='1'",9000);
                 setTimeout(function(){
                     //调用原生的方法，android为约定的别名；stop()为原生的方法
                     window.android.stop();
-                },3000);
+                },10000);
             }
         </script>
     </body>

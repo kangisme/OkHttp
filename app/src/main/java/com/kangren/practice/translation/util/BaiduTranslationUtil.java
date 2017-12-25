@@ -1,4 +1,4 @@
-package com.kangren.practice.util;
+package com.kangren.practice.translation.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.kangren.practice.activity.BaiduTranslateActivity;
+import com.kangren.practice.activity.FingerprintActivity;
 import com.kangren.practice.activity.SpannableActivity;
 import com.kangren.practice.activity.EventBusActivity;
 import com.kangren.practice.activity.OkhttpActivity;
@@ -63,10 +63,10 @@ public class FunctionActivity extends Activity {
                 goActivity(SpannableActivity.class);
             }
         });
-        findViewById(R.id.baidu_translate).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.fingerprint).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goActivity(BaiduTranslateActivity.class);
+                goActivity(FingerprintActivity.class);
             }
         });
     }

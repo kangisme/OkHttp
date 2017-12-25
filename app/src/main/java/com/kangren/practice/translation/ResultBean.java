@@ -1,4 +1,4 @@
-package com.kangren.practice.model;
+package com.kangren.practice.translation;
 
 import java.util.List;
 

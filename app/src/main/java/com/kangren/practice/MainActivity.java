@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.kangren.practice.translation.BaiduTranslateActivity;
+
 /**
  * first activity in whole project
  * Created by kangren on 2017/12/2.
@@ -26,6 +28,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, FunctionActivity.class));
+            }
+        });
+        findViewById(R.id.baidu_translate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, BaiduTranslateActivity.class));
             }
         });
     }

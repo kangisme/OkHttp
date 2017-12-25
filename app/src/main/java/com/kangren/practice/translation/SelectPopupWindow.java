@@ -1,4 +1,4 @@
-package com.kangren.practice.view;
+package com.kangren.practice.translation;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -37,7 +37,7 @@ public class SelectPopupWindow extends PopupWindow {
         this.setAnimationStyle(R.anim.show_from_bottom);
 
         //实例化一个ColorDrawable颜色为半透明
-        ColorDrawable dw = new ColorDrawable(0x88000000);
+        ColorDrawable dw = new ColorDrawable(0x88888888);
 
         //设置SelectPicPopupWindow弹出窗体的背景
         this.setBackgroundDrawable(dw);

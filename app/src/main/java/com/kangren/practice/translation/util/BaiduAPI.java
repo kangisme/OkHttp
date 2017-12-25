@@ -1,6 +1,10 @@
-package com.kangren.practice.util;
+package com.kangren.practice.translation.util;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import com.kangren.practice.translation.util.BaiduTranslationUtil;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -8,6 +12,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
+ * 百度翻译API
  * Created by kangren on 2017/12/11.
  */
 
@@ -17,11 +22,15 @@ public class BaiduAPI {
 
     private final static String KEY = "hGN8BLRS7jziyJKFjVUj";
 
+    //百度翻译API
     private final static String GET_TRANSLATION = "http://api.fanyi.baidu.com/api/trans/vip/translate?" +
             "q=%s&from=%s&to=%s&appid=%s&salt=%s&sign=%s";
 
     public static String getTranslated(String query, String from, String to) throws IOException {
-        int salt = 1435660288;
+        //salt为api请求随机数，这里使用当前日期
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String dateString = format.format(new Date());
+        int salt = Integer.parseInt(dateString);
         String string = APP_ID + query + salt + KEY;
         String sign = BaiduTranslationUtil.stringToMD5(string);
         final String url = String.format(GET_TRANSLATION, query, from, to, APP_ID, salt, sign);

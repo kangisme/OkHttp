@@ -1,55 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.kangren.practice.ViewActivity">
-    <ScrollView
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/okhttp"
+            android:text="OKHttp测试"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/okhttp"
-                android:text="OKHttp测试"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/event_bus"
-                android:text="EventBus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/rx_android"
-                android:text="RxAndroid"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/system_info"
-                android:text="系统信息"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/shared_preferences"
-                android:text="SP本地存储"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/spannable"
-                android:textAllCaps="false"
-                android:text="SpannableStringBuilder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <Button
-                android:id="@+id/baidu_translate"
-                android:text="百度翻译"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/event_bus"
+            android:text="EventBus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/rx_android"
+            android:text="RxAndroid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/system_info"
+            android:text="系统信息"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/shared_preferences"
+            android:text="SP本地存储"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/spannable"
+            android:textAllCaps="false"
+            android:text="SpannableStringBuilder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/fingerprint"
+            android:text="Fingerprint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>
