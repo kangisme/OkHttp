@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-
         android:id="@+id/main_layout"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -55,7 +56,7 @@
 
             <TextView
                 android:id="@+id/translate"
-                android:text="翻译"
+                android:text="开始翻译"
                 android:textSize="16sp"
                 android:padding="4dp"
                 android:layout_centerInParent="true"
@@ -84,7 +85,31 @@
             android:layout_height="0dp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/loading_view"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="正在翻译，请稍后"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ProgressBar
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
     <ImageButton
+        android:alpha="0.8"
         android:id="@+id/tool_menu"
         android:layout_gravity="end|center"
         android:layout_marginBottom="50dp"

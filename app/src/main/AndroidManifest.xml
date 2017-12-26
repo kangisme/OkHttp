@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.kangren.practice">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
@@ -67,6 +70,7 @@
         <activity android:name=".activity.Html5Activity"/>
         <activity android:name=".activity.TexiaotuActivity"/>
         <activity android:name=".activity.FingerprintActivity"/>
+        <activity android:name=".translation.SettingActivity"/>
 
         <receiver android:name="com.kangren.practice.view.MyAppWidgetProvider">
             <meta-data

@@ -37,7 +37,7 @@ public class SelectPopupWindow extends PopupWindow {
         this.setAnimationStyle(R.anim.show_from_bottom);
 
         //实例化一个ColorDrawable颜色为半透明
-        ColorDrawable dw = new ColorDrawable(0x88888888);
+        ColorDrawable dw = new ColorDrawable(0xBB000000);
 
         //设置SelectPicPopupWindow弹出窗体的背景
         this.setBackgroundDrawable(dw);

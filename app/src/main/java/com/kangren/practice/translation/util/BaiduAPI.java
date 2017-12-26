@@ -3,6 +3,7 @@ package com.kangren.practice.translation.util;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import com.kangren.practice.translation.util.BaiduTranslationUtil;
 
@@ -34,7 +35,12 @@ public class BaiduAPI {
         String string = APP_ID + query + salt + KEY;
         String sign = BaiduTranslationUtil.stringToMD5(string);
         final String url = String.format(GET_TRANSLATION, query, from, to, APP_ID, salt, sign);
-        OkHttpClient okHttpClient = new OkHttpClient();
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder()
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS);
+        OkHttpClient okHttpClient = builder.build();
         Request request = new Request.Builder()
                 .url(url)
                 .build();

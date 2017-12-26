@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.icu.text.LocaleDisplayNames;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,6 +17,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.kangren.practice.R;
 import com.kangren.practice.translation.util.BaiduAPI;
+import com.kangren.practice.util.NetworkUtils;
 
 /**
  * Created by kangren on 2017/12/9.
@@ -32,6 +35,8 @@ public class BaiduTranslateActivity extends Activity
         implements View.OnClickListener,PopupMenu.OnMenuItemClickListener{
 
     private final static int MSG_TRANSLATION_RESULT = 0;
+
+    private final static int MSG_TRANSLATION_FAIL = 1;
 
     /**
      * 自动判断
@@ -78,6 +83,8 @@ public class BaiduTranslateActivity extends Activity
      */
     private ClipboardManager clipboardManager;
 
+    private LinearLayout loadingView;
+
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -88,8 +95,12 @@ public class BaiduTranslateActivity extends Activity
                     ResultBean resultBean = gson.fromJson(result, ResultBean.class);
                     if (resultBean != null && resultBean.getTransResult() != null && resultBean.getTransResult().size() > 0)
                     {
+                        if (loadingView != null)
+                        {
+                            loadingView.setVisibility(View.GONE);
+                        }
                         TransResultBean bean = resultBean.getTransResult().get(0);
-                        //防止翻译过程中退出Activity，translatedText被释放
+
                         if (translatedText != null)
                         {
                             translatedText.setText(bean.getDst());
@@ -99,6 +110,14 @@ public class BaiduTranslateActivity extends Activity
                             originalLanguage.setText(getLanguage(resultBean.getFrom()));
                         }
                     }
+                    break;
+                case MSG_TRANSLATION_FAIL:
+                    if (loadingView != null)
+                    {
+                        loadingView.setVisibility(View.GONE);
+                    }
+                    Toast.makeText(BaiduTranslateActivity.this, "失败了，再试一次吧！", Toast.LENGTH_SHORT).show();
+                    break;
             }
             return true;
         }
@@ -118,6 +137,9 @@ public class BaiduTranslateActivity extends Activity
         to = ENGLISH;
         gson = new Gson();
         clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+
+        loadingView = (LinearLayout) findViewById(R.id.loading_view);
+        loadingView.setOnClickListener(this);
 
         originalLanguage = (TextView) findViewById(R.id.original_text_kind);
         originalText = (TextView) findViewById(R.id.original_text);
@@ -176,6 +198,16 @@ public class BaiduTranslateActivity extends Activity
                     Toast.makeText(this, "请输入待翻译的内容", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (!NetworkUtils.isNetworkAvailable(this))
+                {
+                    Toast.makeText(this, "当前网络不可用，请检查网络连接", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                //显示正在翻译进度条
+                loadingView.setVisibility(View.VISIBLE);
+
+                //在子线程中处理网络请求
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -188,6 +220,7 @@ public class BaiduTranslateActivity extends Activity
                         } catch (IOException e)
                         {
                             e.printStackTrace();
+                            handler.sendEmptyMessage(MSG_TRANSLATION_FAIL);
                         }
                     }
                 }).start();
@@ -195,6 +228,9 @@ public class BaiduTranslateActivity extends Activity
             case R.id.select_language:
                 break;
             case R.id.translated_text:
+                break;
+            case R.id.loading_view:
+                //在翻译进行中时，不响应其它点击事件
                 break;
             default:
                 break;
