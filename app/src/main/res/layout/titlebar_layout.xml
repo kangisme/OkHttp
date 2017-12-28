@@ -15,7 +15,7 @@
         android:singleLine="true"
         android:textColor="@color/black"
         android:textSize="@dimen/sp18"
-        tools:text="@string/app_name"/>
+        tools:text="Setting"/>
 
     <ImageButton
         android:id="@+id/titlebar_back"
@@ -29,10 +29,8 @@
         android:src="@mipmap/back_arrow"/>
 
     <TextView
-        android:visibility="gone"
-        tools:visibility="visible"
         android:id="@+id/titlebar_edit"
-        tools:text="编辑"
+        tools:text="Edit"
         android:gravity="center"
         android:padding="10dp"
         android:layout_alignParentEnd="true"

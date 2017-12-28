@@ -71,7 +71,7 @@
                 android:layout_marginRight="5dp"
                 android:gravity="end"
                 android:textSize="20sp"
-                android:text="英文"/>
+                android:text="英语"/>
         </RelativeLayout>
 
         <EditText

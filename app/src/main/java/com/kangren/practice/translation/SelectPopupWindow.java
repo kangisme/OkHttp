@@ -1,26 +1,44 @@
 package com.kangren.practice.translation;
 
+import java.util.List;
+
+import com.kangren.practice.R;
+
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.PopupWindow;
-
-import com.kangren.practice.R;
+import android.widget.TextView;
 
 /**
+ * 自定义PopupWindow——选择语言弹窗
  * Created by kangren on 2017/12/9.
  */
 
 public class SelectPopupWindow extends PopupWindow {
 
-    public SelectPopupWindow(Context context, View.OnClickListener clickListener) {
+    private ListView listView;
+
+    /**
+     * 语言中文列表
+     */
+    private List<String> cnList;
+
+    private Context mContext;
+
+    public SelectPopupWindow(Context context,List<String> selectedList, AdapterView.OnItemClickListener onItemClickListener) {
         super(context);
+        mContext = context;
+        cnList = selectedList;
         final View view = View.inflate(context, R.layout.select_language_popup, null);
-        view.findViewById(R.id.chinese).setOnClickListener(clickListener);
-        view.findViewById(R.id.english).setOnClickListener(clickListener);
-        view.findViewById(R.id.japanese).setOnClickListener(clickListener);
+        listView = (ListView) view.findViewById(R.id.list_language);
+        listView.setAdapter(new ListAdapter());
+        listView.setOnItemClickListener(onItemClickListener);
 
         this.setContentView(view);
 
@@ -57,5 +75,45 @@ public class SelectPopupWindow extends PopupWindow {
                 return true;
             }
         });
+    }
+
+    private class ListAdapter extends BaseAdapter
+    {
+        @Override
+        public int getCount() {
+            return cnList.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return cnList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder viewHolder;
+            if (convertView == null)
+            {
+                viewHolder = new ViewHolder();
+                convertView = View.inflate(mContext, R.layout.list_language_item, null);
+                viewHolder.language = (TextView) convertView.findViewById(R.id.language);
+                convertView.setTag(viewHolder);
+            }
+            else
+            {
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
+            viewHolder.language.setText(cnList.get(position));
+            return convertView;
+        }
+
+        class ViewHolder{
+            TextView language;
+        }
     }
 }

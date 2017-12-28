@@ -1,12 +1,16 @@
 package com.kangren.practice.translation;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.icu.text.LocaleDisplayNames;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,6 +20,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -34,20 +39,39 @@ import com.kangren.practice.util.NetworkUtils;
 public class BaiduTranslateActivity extends Activity
         implements View.OnClickListener,PopupMenu.OnMenuItemClickListener{
 
+    private final static int REQUEST_SETTING = 0;
+
+    public final static int RESULT_FROM_SETTING = 1;
+
     private final static int MSG_TRANSLATION_RESULT = 0;
 
     private final static int MSG_TRANSLATION_FAIL = 1;
 
     /**
-     * 自动判断
+     * “中文”在数组中的位置
      */
-    private final static String AUTO = "auto";
+    private final static int CHINESE_INDEX = 1;
 
-    private final static String CHINESE = "zh";
+    /**
+     * “en”在数组中的位置
+     */
+    private final static int ENGLISH_INDEX = 2;
+
+    private final static String AUTO = "auto";
 
     private final static String ENGLISH = "en";
 
-    private final static String JAPANESE = "jp";
+    /**
+     * 语言中文列表
+     */
+    private List<String> cnList;
+
+    /**
+     * 语言英文列表
+     */
+    private List<String> enList;
+
+    private List<String> selectedList;
 
     /**
      * 默认源语言
@@ -128,6 +152,10 @@ public class BaiduTranslateActivity extends Activity
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_baidu);
+        cnList = new ArrayList<>();
+        cnList = Arrays.asList(getResources().getStringArray(R.array.language_cn));
+        enList = new ArrayList<>();
+        enList = Arrays.asList(getResources().getStringArray(R.array.language_en));
         initView();
         initPopupView();
     }
@@ -164,29 +192,60 @@ public class BaiduTranslateActivity extends Activity
     }
 
     private void initPopupView() {
+        selectedList = new ArrayList<>();
+        refreshList();
         findViewById(R.id.select_language).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow = new SelectPopupWindow(BaiduTranslateActivity.this, BaiduTranslateActivity.this);
+                popupWindow = new SelectPopupWindow(BaiduTranslateActivity.this, selectedList, onItemClickListener);
                 popupWindow.showAtLocation(BaiduTranslateActivity.this.findViewById(R.id.main_layout),
                         Gravity.BOTTOM| Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
             }
         });
     }
 
+    /**
+     * 刷新已选中的语言
+     */
+    private void refreshList() {
+        selectedList.clear();
+        selectedList.add("中文");
+        selectedList.add("英语");
+        selectedList.add("日语");
+        SharedPreferences sp = getSharedPreferences(SettingActivity.LANGUAGE_SELECTED, MODE_PRIVATE);
+        for (int i = 0; i < cnList.size(); i++)
+        {
+            String language = cnList.get(i);
+            if (sp.getBoolean(language,false))
+            {
+                selectedList.add(language);
+            }
+        }
+    }
+
+    /**
+     * 处理popupWindow中的ListView点击事件
+     */
+    private AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            if (view instanceof TextView && translatedLanguage != null) {
+                String language = ((TextView) view).getText().toString();
+                translatedLanguage.setText(language);
+                to = getShort(language);
+            }
+            if (popupWindow != null && popupWindow.isShowing())
+            {
+                popupWindow.dismiss();
+            }
+        }
+    };
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.chinese:
-                showTranslatedLanguage(CHINESE);
-                break;
-            case R.id.english:
-                showTranslatedLanguage(ENGLISH);
-                break;
-            case R.id.japanese:
-                showTranslatedLanguage(JAPANESE);
-                break;
             case R.id.original_text_kind:
                 break;
             case R.id.original_text:
@@ -251,7 +310,7 @@ public class BaiduTranslateActivity extends Activity
         }
         if (translatedLanguage != null)
         {
-            translatedLanguage.setText(getLanguage(language));
+            translatedLanguage.setText(language);
         }
     }
 
@@ -262,21 +321,49 @@ public class BaiduTranslateActivity extends Activity
      */
     private String getLanguage(String language)
     {
-        String languageString = "中文";
-        switch (language)
+        //异常状态返回默认值
+        if (cnList == null || enList == null || language == null || TextUtils.isEmpty(language))
         {
-            case CHINESE:
-                break;
-            case ENGLISH:
-                languageString = "英语";
-                break;
-            case JAPANESE:
-                languageString = "日语";
-                break;
-            default:
-                Log.e("tan90", "it can not happen!");
+            return "中文";
         }
-        return languageString;
+
+        //默认index，不存在该语言则返回cnList.get(1)
+        int index = CHINESE_INDEX;
+        for (int i = 0; index < enList.size(); i++)
+        {
+            if (language.equals(enList.get(i)))
+            {
+                index = i;
+                break;
+            }
+        }
+        return cnList.get(index);
+    }
+
+    /**
+     * 根据语言获取其缩写
+     * @param language 语言
+     * @return 缩写
+     */
+    private String getShort(String language)
+    {
+        //异常状态返回默认值
+        if (cnList == null || enList == null || language == null || TextUtils.isEmpty(language))
+        {
+            return ENGLISH;
+        }
+
+        //默认index，不存在该语言则返回cnList.get(2)
+        int index = ENGLISH_INDEX;
+        for (int i = 0; index < cnList.size(); i++)
+        {
+            if (language.equals(cnList.get(i)))
+            {
+                index = i;
+                break;
+            }
+        }
+        return enList.get(index);
     }
 
     @SuppressLint("SetTextI18n")
@@ -285,6 +372,7 @@ public class BaiduTranslateActivity extends Activity
         switch (item.getItemId())
         {
             case R.id.clear:
+                originalLanguage.setText("自动检测");
                 originalText.setText("");
                 translatedText.setText("");
                 break;
@@ -314,10 +402,20 @@ public class BaiduTranslateActivity extends Activity
                 }
                 break;
             case R.id.setting:
-                Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, SettingActivity.class);
+                startActivityForResult(intent, REQUEST_SETTING);
                 break;
             default:
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == REQUEST_SETTING && resultCode == RESULT_FROM_SETTING)
+        {
+            refreshList();
+        }
     }
 }
