@@ -16,7 +16,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -271,7 +270,7 @@ public class BaiduTranslateActivity extends Activity
                     @Override
                     public void run() {
                         try {
-                           final String result = BaiduAPI.getTranslated(query, from, to);
+                           final String result = BaiduAPI.getTranslation(query, from, to);
                            Message message = new Message();
                            message.what = MSG_TRANSLATION_RESULT;
                            message.obj = result;

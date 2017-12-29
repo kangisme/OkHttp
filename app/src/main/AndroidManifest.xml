@@ -71,6 +71,7 @@
         <activity android:name=".activity.TexiaotuActivity"/>
         <activity android:name=".activity.FingerprintActivity"/>
         <activity android:name=".translation.SettingActivity"/>
+        <activity android:name=".litepal.LitePalActivity"/>
 
         <receiver android:name="com.kangren.practice.view.MyAppWidgetProvider">
             <meta-data

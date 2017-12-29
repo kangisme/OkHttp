@@ -9,6 +9,7 @@
     <Button
         android:id="@+id/custom_view"
         android:text="自定义View"
+        android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
@@ -19,6 +20,12 @@
     <Button
         android:id="@+id/baidu_translate"
         android:text="百度翻译"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/lite_pal"
+        android:text="LitePal"
+        android:textAllCaps="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

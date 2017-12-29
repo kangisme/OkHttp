@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.kangren.practice.litepal.LitePalActivity;
 import com.kangren.practice.translation.BaiduTranslateActivity;
 
 /**
@@ -34,6 +35,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, BaiduTranslateActivity.class));
+            }
+        });
+        findViewById(R.id.lite_pal).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LitePalActivity.class));
             }
         });
     }

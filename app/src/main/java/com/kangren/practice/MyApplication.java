@@ -1,5 +1,7 @@
 package com.kangren.practice;
 
+import org.litepal.LitePalApplication;
+
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
@@ -9,7 +11,7 @@ import android.util.Log;
  * Created by kangren on 2017/11/15.
  */
 
-public class MyApplication extends Application {
+public class MyApplication extends LitePalApplication {
     private static final String TAG = "MyApplication";
     @Override
     public void onCreate() {
