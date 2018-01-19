@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.kangren.practice.activity.FingerprintActivity;
+import com.kangren.practice.activity.ListViewActivity;
+import com.kangren.practice.activity.RecyclerViewActivity;
 import com.kangren.practice.activity.SpannableActivity;
 import com.kangren.practice.activity.EventBusActivity;
 import com.kangren.practice.activity.OkhttpActivity;
@@ -27,6 +29,18 @@ public class FunctionActivity extends Activity {
     }
 
     private void init() {
+        findViewById(R.id.list_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(ListViewActivity.class);
+            }
+        });
+        findViewById(R.id.recycler_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(RecyclerViewActivity.class);
+            }
+        });
         findViewById(R.id.okhttp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

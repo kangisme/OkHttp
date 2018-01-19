@@ -12,6 +12,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+        <Button
+            android:id="@+id/drawable"
+            android:text="可变Drawable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/danmu_play"
+            android:text="点赞动画"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <Button
             android:id="@+id/custom_view"
             android:layout_width="match_parent"

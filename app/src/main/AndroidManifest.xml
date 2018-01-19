@@ -72,6 +72,11 @@
         <activity android:name=".activity.FingerprintActivity"/>
         <activity android:name=".translation.SettingActivity"/>
         <activity android:name=".litepal.LitePalActivity"/>
+        <activity android:name=".databinding.BindingActivity"/>
+        <activity android:name=".activity.DrawableActivity"/>
+        <activity android:name=".activity.ZanPlayActivity"/>
+        <activity android:name=".activity.RecyclerViewActivity"/>
+        <activity android:name=".activity.ListViewActivity"/>
 
         <receiver android:name="com.kangren.practice.view.MyAppWidgetProvider">
             <meta-data

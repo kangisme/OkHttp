@@ -2,18 +2,22 @@ package com.kangren.practice;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
 import com.kangren.practice.activity.ChannelCategoryActivity;
 import com.kangren.practice.activity.CircleActivity;
 import com.kangren.practice.activity.CustomActivity;
+import com.kangren.practice.activity.DrawableActivity;
 import com.kangren.practice.activity.FloatingButtonActivity;
 import com.kangren.practice.activity.Html5Activity;
 import com.kangren.practice.activity.MyAssetActivity;
 import com.kangren.practice.activity.TexiaotuActivity;
 import com.kangren.practice.activity.ViewDrawActivity;
 import com.kangren.practice.activity.ViewGroupActivity;
+import com.kangren.practice.activity.ZanPlayActivity;
 
 /**
  * custom view test index
@@ -29,8 +33,29 @@ public class ViewActivity extends Activity {
         init();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //强制竖屏
+        if(this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
     private void init()
     {
+        findViewById(R.id.drawable).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(DrawableActivity.class);
+            }
+        });
+        findViewById(R.id.danmu_play).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(ZanPlayActivity.class);
+            }
+        });
         findViewById(R.id.custom_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

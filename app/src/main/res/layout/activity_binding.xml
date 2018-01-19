@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="user"
+            type="com.kangren.practice.databinding.User"/>
+        <variable
+            name="handler"
+            type="com.kangren.practice.databinding.MyHandler"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:text="@{user.firstName}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{handler::onClickOne}"/>
+        <Button
+            android:text="@{user.lastName}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</layout>

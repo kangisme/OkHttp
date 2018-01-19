@@ -12,6 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/list_view"
+            android:text="ListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/recycler_view"
+            android:text="RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
             android:id="@+id/okhttp"
             android:text="OKHttp测试"
             android:layout_width="match_parent"
