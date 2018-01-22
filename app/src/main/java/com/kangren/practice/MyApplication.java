@@ -1,21 +1,34 @@
 package com.kangren.practice;
 
-import org.litepal.LitePalApplication;
-
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.FormatStrategy;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.PrettyFormatStrategy;
+
 /**
  * Created by kangren on 2017/11/15.
  */
 
-public class MyApplication extends LitePalApplication {
-    private static final String TAG = "MyApplication";
+public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        FormatStrategy strategy = PrettyFormatStrategy.newBuilder()
+                .showThreadInfo(false)
+                .tag("practice")
+                .build();
+        Logger.addLogAdapter(new AndroidLogAdapter(strategy){
+            @Override
+            public boolean isLoggable(int priority, String tag) {
+                return BuildConfig.DEBUG;
+            }
+        });
+
         int pid = android.os.Process.myPid();
         String processName = "";
         ActivityManager manager = (ActivityManager) getApplicationContext().getSystemService(Context.ACTIVITY_SERVICE);
@@ -25,6 +38,6 @@ public class MyApplication extends LitePalApplication {
                 processName = process.processName;
             }
         }
-        Log.d(TAG, "application start, processName:" + processName);
+        Logger.d("application start, processName:" + processName);
     }
 }

@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 
+import com.kangren.practice.activity.AnimationActivity;
 import com.kangren.practice.activity.ChannelCategoryActivity;
 import com.kangren.practice.activity.CircleActivity;
 import com.kangren.practice.activity.CustomActivity;
@@ -18,6 +19,7 @@ import com.kangren.practice.activity.TexiaotuActivity;
 import com.kangren.practice.activity.ViewDrawActivity;
 import com.kangren.practice.activity.ViewGroupActivity;
 import com.kangren.practice.activity.ZanPlayActivity;
+import com.kangren.practice.databinding.BindingActivity;
 
 /**
  * custom view test index
@@ -108,6 +110,12 @@ public class ViewActivity extends Activity {
             @Override
             public void onClick(View v) {
                 goActivity(TexiaotuActivity.class);
+            }
+        });
+        findViewById(R.id.animation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goActivity(AnimationActivity.class);
             }
         });
     }
