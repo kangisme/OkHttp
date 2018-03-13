@@ -124,7 +124,7 @@ public class OkhttpActivity extends Activity {
     private String getSyncHttp() throws IOException{
         OkHttpClient mOkHttpClient = new OkHttpClient();
         //创建请求Request
-        final Request request = new Request.Builder()
+        Request request = new Request.Builder()
                 .url("http://www.baidu.com")
                 .build();
         Call call = mOkHttpClient.newCall(request);
@@ -141,7 +141,7 @@ public class OkhttpActivity extends Activity {
         //创建okHttpClient对象
         OkHttpClient mOkHttpClient = new OkHttpClient();
         //创建一个Request
-        final Request request = new Request.Builder()
+        Request request = new Request.Builder()
                 .url("http://www.baidu.com")
                 .build();
         //new call

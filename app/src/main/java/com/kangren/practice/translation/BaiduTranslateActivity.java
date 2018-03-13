@@ -197,6 +197,7 @@ public class BaiduTranslateActivity extends Activity
             @Override
             public void onClick(View v) {
                 popupWindow = new SelectPopupWindow(BaiduTranslateActivity.this, selectedList, onItemClickListener);
+
                 popupWindow.showAtLocation(BaiduTranslateActivity.this.findViewById(R.id.main_layout),
                         Gravity.BOTTOM| Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
             }

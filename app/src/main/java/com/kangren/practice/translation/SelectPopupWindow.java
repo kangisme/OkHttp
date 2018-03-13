@@ -3,12 +3,14 @@ package com.kangren.practice.translation;
 import java.util.List;
 
 import com.kangren.practice.R;
+import com.orhanobut.logger.Logger;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
@@ -23,6 +25,8 @@ import android.widget.TextView;
 public class SelectPopupWindow extends PopupWindow {
 
     private ListView listView;
+
+    private boolean isReachTop;
 
     /**
      * 语言中文列表
@@ -39,6 +43,18 @@ public class SelectPopupWindow extends PopupWindow {
         listView = (ListView) view.findViewById(R.id.list_language);
         listView.setAdapter(new ListAdapter());
         listView.setOnItemClickListener(onItemClickListener);
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                isReachTop = firstVisibleItem == 0;
+                Logger.e(isReachTop + "");
+            }
+        });
 
         this.setContentView(view);
 
@@ -52,7 +68,7 @@ public class SelectPopupWindow extends PopupWindow {
         this.setFocusable(true);
 
         //设置SelectPicPopupWindow弹出窗体动画效果
-        this.setAnimationStyle(R.anim.show_from_bottom);
+        this.setAnimationStyle(R.style.popwin_anim_style);
 
         //实例化一个ColorDrawable颜色为半透明
         ColorDrawable dw = new ColorDrawable(0xBB000000);
@@ -76,6 +92,8 @@ public class SelectPopupWindow extends PopupWindow {
             }
         });
     }
+
+
 
     private class ListAdapter extends BaseAdapter
     {
