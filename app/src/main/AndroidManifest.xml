@@ -26,13 +26,6 @@
 
         </activity>
 
-        <activity android:name="com.kangren.practice.activity.CustomActivity">
-
-        </activity>
-        <activity android:name="com.kangren.practice.activity.ViewGroupActivity">
-
-        </activity>
-
         <activity android:name="com.kangren.practice.activity.ChannelCategoryActivity">
 
         </activity>
@@ -70,7 +63,6 @@
         <activity android:name="com.kangren.practice.activity.FloatingButtonActivity"/>
         <activity android:name=".activity.Html5Activity"/>
         <activity android:name=".activity.TexiaotuActivity"/>
-        <activity android:name=".activity.FingerprintActivity"/>
         <activity android:name=".translation.SettingActivity"/>
         <activity android:name=".litepal.LitePalActivity"/>
         <activity android:name=".databinding.BindingActivity"/>

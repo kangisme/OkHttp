@@ -23,17 +23,6 @@
             android:text="点赞动画"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/custom_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CustomView"/>
-
-        <Button
-            android:id="@+id/custom_view_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CustomViewGroup"/>
 
         <Button
             android:id="@+id/channel"

@@ -10,16 +10,13 @@ import android.view.View;
 import com.kangren.practice.activity.AnimationActivity;
 import com.kangren.practice.activity.ChannelCategoryActivity;
 import com.kangren.practice.activity.CircleActivity;
-import com.kangren.practice.activity.CustomActivity;
 import com.kangren.practice.activity.DrawableActivity;
 import com.kangren.practice.activity.FloatingButtonActivity;
 import com.kangren.practice.activity.Html5Activity;
 import com.kangren.practice.activity.MyAssetActivity;
 import com.kangren.practice.activity.TexiaotuActivity;
 import com.kangren.practice.activity.ViewDrawActivity;
-import com.kangren.practice.activity.ViewGroupActivity;
 import com.kangren.practice.activity.ZanPlayActivity;
-import com.kangren.practice.databinding.BindingActivity;
 
 /**
  * custom view test index
@@ -56,18 +53,6 @@ public class ViewActivity extends Activity {
             @Override
             public void onClick(View v) {
                 goActivity(ZanPlayActivity.class);
-            }
-        });
-        findViewById(R.id.custom_view).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goActivity(CustomActivity.class);
-            }
-        });
-        findViewById(R.id.custom_view_group).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goActivity(ViewGroupActivity.class);
             }
         });
         findViewById(R.id.channel).setOnClickListener(new View.OnClickListener() {
